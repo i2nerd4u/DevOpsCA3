@@ -18,5 +18,5 @@ if __name__ == "__main__":
             counter.reset_day()
             print("Day reset.")
         elif choice == "4":
-            print("Exiting application, goodbye!")
+            print("Exiting application, goodbye! test")
             break
