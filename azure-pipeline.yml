@@ -41,3 +41,47 @@ steps:
 - script: |
     python -m pylint calorie_counter
   displayName: 'Run static analysis'
+
+trigger:
+  branches:
+    include:
+      - main
+      - dev
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+# Use Python 3.12
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.12'
+    addToPath: true
+
+# Install dependencies
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    pip install pytest coverage pylint
+  displayName: 'Install dependencies'
+
+# Run tests and enforce 95% coverage
+- script: |
+    export PYTHONPATH=$(System.DefaultWorkingDirectory)
+    coverage run -m pytest
+    coverage report --fail-under=95
+    coverage xml
+  displayName: 'Run tests with coverage'
+
+# Publish coverage results
+- task: PublishCodeCoverageResults@2
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'coverage.xml'
+    reportDirectory: 'coverage_html_report'
+    failIfCoverageEmpty: true
+
+# Run static code analysis
+- script: |
+    python -m pylint calorie_counter
+  displayName: 'Run static analysis'
