@@ -67,6 +67,18 @@ python web_app.py
 - Cross-browser compatibility testing
 
 ## Environment Setup and Configuration
+
+### Azure DevOps Environment Setup
+**To enable deployment stages, create environments in Azure DevOps:**
+
+1. Go to Azure DevOps → Pipelines → Environments
+2. Create new environment named `test`
+3. Create new environment named `production`
+4. For production environment:
+   - Add approval gate: Settings → Approvals → Add your user
+   - Set required approvers before deployment
+5. Switch to `azure-pipeline-with-environments.yml` when ready
+
 ### Test Environment
 - Automated deployment after successful build
 - UAT test execution
