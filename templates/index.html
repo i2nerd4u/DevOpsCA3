@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calorie Counter</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .container { max-width: 600px; }
+        input, button { padding: 8px; margin: 5px; }
+        .meal { background: #f0f0f0; padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Calorie Counter</h1>
+        
+        <form action="/add" method="post">
+            <input type="text" name="food" placeholder="Food name" required>
+            <input type="number" name="calories" placeholder="Calories" required>
+            <button type="submit">Add Food</button>
+        </form>
+        
+        <h2>Today's Meals (Total: {{ total }} calories)</h2>
+        {% for meal in meals %}
+            <div class="meal">{{ meal.food }}: {{ meal.calories }} calories</div>
+        {% endfor %}
+        
+        <form action="/reset" method="post" style="margin-top: 20px;">
+            <button type="submit" onclick="return confirm('Reset day?')">Reset Day</button>
+        </form>
+    </div>
+</body>
+</html>
