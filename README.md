@@ -44,6 +44,8 @@ python web_app.py
 - Triggers on `main` and `dev` branches
 - Production deployment restricted to `main` branch
 - All tests must pass before deployment
+- **Note**: GitHub branch protection requires paid account for private repos
+- **Alternative**: Azure DevOps environment approval gates provide equivalent protection
 
 ## Testing Strategy
 ### Unit Testing

@@ -106,6 +106,12 @@ stages:
       runOnce:
         deploy:
           steps:
+          - script: |
+              echo "Current branch: $(Build.SourceBranch)"
+              echo "Target branch for production: refs/heads/main"
+              echo "Production deployment starting..."
+            displayName: 'Pre-deployment checks'
+
           - task: DownloadBuildArtifacts@1
             inputs:
               artifactName: 'CalorieCounterApp'
@@ -115,4 +121,5 @@ stages:
               echo "Deploying to production environment"
               echo "Application deployed successfully to production"
               echo "Production deployment completed"
+              echo "Deployment timestamp: $(date)"
             displayName: 'Deploy to production'
