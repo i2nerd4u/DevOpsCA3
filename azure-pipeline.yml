@@ -220,3 +220,17 @@ stages:
               echo "Production deployment completed"
               echo "Deployment timestamp: $(date)"
             displayName: 'Deploy to production'
+
+- stage: PipelineComplete
+  displayName: 'Pipeline Completion'
+  dependsOn: Production
+  condition: succeeded()
+  jobs:
+  - job: CompleteJob
+    displayName: 'Mark Pipeline Complete'
+    steps:
+    - script: |
+        echo "=== PIPELINE COMPLETED SUCCESSFULLY ==="
+        echo "All stages completed including production approval"
+        echo "Pipeline is now fully complete"
+      displayName: 'Pipeline completion confirmation'

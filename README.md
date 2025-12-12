@@ -92,10 +92,10 @@ Branches:
 - **Build Validation**: Pipeline must pass before merge is allowed - NO EXCEPTIONS
 - **Up-to-date Requirement**: Branch must be current with main before merge
 - **Quality Gates Enforced**: 
-        - Coverage below 95% = Pipeline FAILS = Merge BLOCKED
-        - Any test failure = Pipeline FAILS = Merge BLOCKED
-        - Security scan failures = Pipeline FAILS = Merge BLOCKED
-        - Performance test failures = Pipeline FAILS = Merge BLOCKED
+        - Coverage below 95% = Pipeline FAILS = Merge is BLOCKED
+        - Any test failure = Pipeline FAILS = Merge is BLOCKED
+        - Security scan failures = Pipeline FAILS = Merge is BLOCKED
+        - Performance test failures = Pipeline FAILS = Merge is BLOCKED
 
 
 ### Merge Methods:
