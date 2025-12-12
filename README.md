@@ -73,10 +73,10 @@ The pipeline includes:
 
 
 
-![waitingonapproval](images/Waitingonapproval.jpg)
-![waitingonapproval](images/Review.jpg)
-![waitingonapproval](images/Givingapproval.jpg)
-![waitingonapproval](images/Pipelinesucceed.jpg)
+![Waiting on Approval](images/Waitingonapproval.jpg)
+![Review Process](images/Review.jpg)
+![Giving Approval](images/Givingapproval.jpg)
+![Pipeline Success](images/Pipelinesucceed.jpg)
 
 
 
@@ -143,8 +143,6 @@ Branches:
 - **Coverage Reports**: Detailed HTML coverage reports with line-by-line analysis
 - **Security Reports**: Comprehensive vulnerability reports stored as artifacts
 - **Test Dashboard**: Integrated Azure DevOps test analytics and metrics
-
-![Unit Tests Coverage](images/Unittestswithcoverage.png)
 
 ### Pipeline Integration :
 - All tests automatically triggered on dev and also main branches 
