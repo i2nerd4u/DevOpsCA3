@@ -38,7 +38,7 @@ Clear all entered meals and reset the calorie count for a new day
 Web Interface:
 Flask-based web application for remote access and better user experience
 
-![CalorieCounterScreenshot](images/Applicationonterminal.png)
+![CalorieCounterScreenshot](images/Applicationonterminal.jpg)
 ![Deployingwebapp](images/Deployingwebapp.jpg)
 ![Webapp](images/Webapp.jpg)
 
@@ -112,7 +112,7 @@ Branches:
 - **Coverage Enforcement**: Minimum 95% code coverage ENFORCED via Azure Pipelines
 - Coverage measured using coverage.py with XML and HTML reports
 
-![Unit Tests Coverage](images/Unittestswithcoverage.png)
+![Unit Tests Coverage](images/Unittestswithcoverage.jpg)
 
 ### Security Testing:
 - **Bandit SAST**: Static Application Security Testing for code vulnerabilities
@@ -120,7 +120,7 @@ Branches:
 - **Input Validation Tests**: XSS and SQL injection protection testing
 - Security test failures BLOCK pipeline progression
 
-![Security Tests](images/Testsecurity.png)
+![Security Tests](images/SecurityScans.jpg)
 
 ### Performance Testing:
 - Load testing with 1000+ food items
@@ -128,7 +128,7 @@ Branches:
 - Memory usage optimization testing
 - Performance failures BLOCK pipeline progression
 
-![Performance Tests](images/Performancetests.png)
+![Performance Tests](images/Performancetests.jpg)
 
 ### UAT Testing with Selenium:
 - Automated browser testing of web interface
