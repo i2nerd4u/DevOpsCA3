@@ -146,8 +146,8 @@ Branches:
 
 ![Unit Tests Coverage](images/Unittestswithcoverage.png)
 
-### Pipeline Integration:
-- All tests automatically triggered on dev and main branches
+### Pipeline Integration :
+- All tests automatically triggered on dev and also main branches 
 - PRs cannot be merged unless ALL tests pass and coverage meets 95% minimum
 - Pipeline failures immediately block any merge attempts
 - Test results published to Azure DevOps for tracking and analysis
