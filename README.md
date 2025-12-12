@@ -57,8 +57,7 @@ The pipeline includes:
 - Comprehensive test result publishing with JUnit XML reports
 - Artifact creation and publishing for deployment stages
 
-![Build Stage Details](images/build-stage-details.png)
-![Pylint Analysis](images/pylint-analysis.png)
+![Build Stage Details](images/Pipelinesucceed.jpg)
 
 ### Test Environment Features:
 - Automated deployment of application artifacts
@@ -72,7 +71,7 @@ The pipeline includes:
 - Production health verification
 - Rollback capabilities
 
-![Environments Setup](images/environments-setup.png)
+
 
 ![waitingonapproval](images/Waitingonapproval.jpg)
 ![waitingonapproval](images/Review.jpg)
@@ -98,8 +97,6 @@ Branches:
         - Security scan failures = Pipeline FAILS = Merge BLOCKED
         - Performance test failures = Pipeline FAILS = Merge BLOCKED
 
-![Branch Policies Azure](images/branch-policies-azure.png)
-![Pull Request Checks](images/pull-request-checks.png)
 
 ### Merge Methods:
 - Merge commits allowed
@@ -115,8 +112,7 @@ Branches:
 - **Coverage Enforcement**: Minimum 95% code coverage ENFORCED via Azure Pipelines
 - Coverage measured using coverage.py with XML and HTML reports
 
-![Unit Tests Coverage](images/unit-tests-coverage.png)
-![All Tests Passing](images/all-tests-passing.png)
+![Unit Tests Coverage](images/Unittestswithcoverage.png)
 
 ### Security Testing:
 - **Bandit SAST**: Static Application Security Testing for code vulnerabilities
@@ -124,8 +120,7 @@ Branches:
 - **Input Validation Tests**: XSS and SQL injection protection testing
 - Security test failures BLOCK pipeline progression
 
-![Security Scans](images/security-scans.png)
-![Security Tests](images/security-tests.png)
+![Security Tests](images/Testsecurity.png)
 
 ### Performance Testing:
 - Load testing with 1000+ food items
@@ -133,7 +128,7 @@ Branches:
 - Memory usage optimization testing
 - Performance failures BLOCK pipeline progression
 
-![Performance Tests](images/performance-tests.png)
+![Performance Tests](images/Performancetests.png)
 
 ### UAT Testing with Selenium:
 - Automated browser testing of web interface
@@ -149,9 +144,7 @@ Branches:
 - **Security Reports**: Comprehensive vulnerability reports stored as artifacts
 - **Test Dashboard**: Integrated Azure DevOps test analytics and metrics
 
-![Test Results Dashboard](images/test-results-dashboard.png)
-![Coverage Report Azure](images/coverage-report-azure.png)
-![Pipeline Stages](images/pipeline-stages.png)
+![Unit Tests Coverage](images/Unittestswithcoverage.png)
 
 ### Pipeline Integration:
 - All tests automatically triggered on dev and main branches
