@@ -176,7 +176,7 @@ stages:
 - stage: Production
   displayName: 'Deploy to Production'
   dependsOn: TestEnvironment
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), eq(variables['System.PullRequest.TargetBranch'], 'main')))
   jobs:
   - deployment: DeployProd
     displayName: 'Deploy to Production Environment'
@@ -186,8 +186,11 @@ stages:
         deploy:
           steps:
           - script: |
-              echo "Current branch: $(Build.SourceBranch)"
-              echo "Target branch for production: refs/heads/main"
+              echo "=== Production Deployment Debug Info ==="
+              echo "Build.SourceBranch: $(Build.SourceBranch)"
+              echo "System.PullRequest.TargetBranch: $(System.PullRequest.TargetBranch)"
+              echo "System.PullRequest.SourceBranch: $(System.PullRequest.SourceBranch)"
+              echo "Build.Reason: $(Build.Reason)"
               echo "Production deployment starting..."
             displayName: 'Pre-deployment checks'
 
