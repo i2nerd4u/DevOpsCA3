@@ -125,3 +125,5 @@ safety check
 coverage run -m pytest
 coverage report
 ```
+
+# Thank you for reading my report
