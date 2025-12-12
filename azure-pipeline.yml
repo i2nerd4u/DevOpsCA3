@@ -27,9 +27,14 @@ stages:
     - script: |
         export PYTHONPATH=$(System.DefaultWorkingDirectory)
         coverage run -m pytest tests/test_calculator.py --junitxml=unit-test-results.xml
-        coverage report --fail-under=95
+        echo "Enforcing 95% minimum coverage requirement..."
+        coverage report --fail-under=95 --show-missing
+        if [ $? -ne 0 ]; then
+          echo "##vso[task.logissue type=error]Coverage below 95% - Pipeline blocked"
+          exit 1
+        fi
         coverage xml
-      displayName: 'Run unit tests with coverage'
+      displayName: 'Enforce coverage requirements (95% minimum)'
 
     - task: PublishTestResults@2
       inputs:
@@ -101,8 +106,13 @@ stages:
       condition: always()
 
     - script: |
+        echo "Running performance tests - Pipeline will fail if tests fail"
         python -m pytest tests/test_performance.py -v --junitxml=performance-test-results.xml
-      displayName: 'Run performance tests'
+        if [ $? -ne 0 ]; then
+          echo "##vso[task.logissue type=error]Performance tests failed - Pipeline blocked"
+          exit 1
+        fi
+      displayName: 'Enforce performance test requirements'
 
     - task: PublishTestResults@2
       inputs:
@@ -113,8 +123,13 @@ stages:
       displayName: 'Publish performance test results'
 
     - script: |
+        echo "Running security tests - Pipeline will fail if tests fail"
         python -m pytest tests/test_security.py -v --junitxml=security-test-results.xml
-      displayName: 'Run security unit tests'
+        if [ $? -ne 0 ]; then
+          echo "##vso[task.logissue type=error]Security tests failed - Pipeline blocked"
+          exit 1
+        fi
+      displayName: 'Enforce security test requirements'
 
     - task: PublishTestResults@2
       inputs:
