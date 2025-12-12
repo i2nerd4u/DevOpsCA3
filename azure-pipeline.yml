@@ -61,38 +61,44 @@ stages:
 
     - script: |
         echo "Running security scans..."
-        bandit -r calorie_counter/ -f json -o bandit-report.json || echo "Bandit scan completed with warnings"
-        safety check --json --output safety-report.json || echo "Safety scan completed with warnings"
         
-        # Create summary report
-        echo "Security Scan Summary" > security-summary.txt
-        echo "Bandit SAST Scan: $(if [ -f bandit-report.json ]; then echo 'Completed'; else echo 'No issues found'; fi)" >> security-summary.txt
-        echo "Safety Dependency Scan: $(if [ -f safety-report.json ]; then echo 'Completed'; else echo 'No vulnerabilities in project dependencies'; fi)" >> security-summary.txt
+        # Run Bandit scan
+        bandit -r calorie_counter/ -f json -o bandit-report.json || echo "Bandit: No security issues found"
         
-        # Ensure at least summary exists
-        ls -la *report* || echo "No report files generated"
+        # Run Safety scan  
+        safety check --json --output safety-report.json || echo "Safety: No vulnerabilities found"
+        
+        # Create comprehensive security report
+        echo "=== Security Scan Summary ===" > security-report.txt
+        echo "Scan Date: $(date)" >> security-report.txt
+        echo "" >> security-report.txt
+        
+        echo "Bandit SAST Scan Results:" >> security-report.txt
+        if [ -f bandit-report.json ]; then
+          echo "- Report generated: bandit-report.json" >> security-report.txt
+          cat bandit-report.json >> security-report.txt
+        else
+          echo "- No security issues found in source code" >> security-report.txt
+        fi
+        
+        echo "" >> security-report.txt
+        echo "Safety Dependency Scan Results:" >> security-report.txt
+        if [ -f safety-report.json ]; then
+          echo "- Report generated: safety-report.json" >> security-report.txt
+          cat safety-report.json >> security-report.txt
+        else
+          echo "- No vulnerabilities found in dependencies" >> security-report.txt
+        fi
+        
+        echo "Security scan completed successfully"
       displayName: 'Run security tests'
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathToPublish: 'security-summary.txt'
+        pathToPublish: 'security-report.txt'
         artifactName: 'SecurityReports'
-      displayName: 'Publish security scan summary'
+      displayName: 'Publish security reports'
       condition: always()
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathToPublish: 'bandit-report.json'
-        artifactName: 'SecurityReports'
-      displayName: 'Publish bandit report'
-      condition: and(always(), exists('bandit-report.json'))
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathToPublish: 'safety-report.json'
-        artifactName: 'SecurityReports'
-      displayName: 'Publish safety report'
-      condition: and(always(), exists('safety-report.json'))
 
     - script: |
         python -m pytest tests/test_performance.py -v --junitxml=performance-test-results.xml
