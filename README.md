@@ -47,7 +47,7 @@ The Azure pipeline is configured using the azure-pipeline.yml file with multi-st
 The pipeline includes:
 - **Build Stage**: Install dependencies, run all automated tests, enforce quality gates
 - **Test Environment Stage**: Deploy to test environment, run UAT tests with Selenium
-- **Production Stage**: Deploy to production with manual approval gates
+- **Production Stage**: Deploy to production with manual approval gates.
 
 ### Build Stage Features:
 - Automatically running unit tests with pytest (95% coverage enforced - pipeline fails if below)
@@ -84,7 +84,7 @@ The pipeline includes:
 ## Branch Policies and Protection
 Branches:
 - main (protected with enforced policies)
-- dev (development branch)
+- dev (development branch for testing code before merging)
 
 ### Azure DevOps Branch Protection Rules (ENFORCED):
 - **Pull Request Required**: Direct pushes to main branch are BLOCKED
