@@ -67,14 +67,14 @@ The pipeline includes:
 
 ### Production Environment Features:
 - Manual approval gate (deployment blocked until approved)
+![onlyapproval](images/Approvalonly.jpg)
 - Artifact-based deployment
 - Production health verification
 - Rollback capabilities
 
 
-
+![failingmerge](images/Failingmerge.jpg)
 ![Waiting on Approval](images/Waitingonapproval.jpg)
-![Review Process](images/Review.jpg)
 ![Giving Approval](images/Givingapproval.jpg)
 ![Pipeline Success](images/Pipelinesucceed.jpg)
 
@@ -102,6 +102,8 @@ Branches:
 - Merge commits allowed
 - Squash merging allowed
 - Rebase and merge allowed
+
+![mergepasses](images/MergePassed.jpg)
 
 ## Testing Strategy
 ### Unit Testing:

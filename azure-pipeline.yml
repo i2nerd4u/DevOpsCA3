@@ -175,9 +175,27 @@ stages:
 
           - script: |
               cd $(System.ArtifactsDirectory)/CalorieCounterApp
-              pip install -r requirements.txt
-              python -m pytest tests/test_uat.py -v --junitxml=uat-test-results.xml || echo "UAT tests completed"
-            displayName: 'Run UAT tests'
+              # Start web app in background
+              python web_app.py &
+              WEB_PID=$!
+              echo "Web app started with PID: $WEB_PID"
+              
+              # Wait for app to start
+              sleep 10
+              
+              # Check if app is running
+              curl -f http://localhost:8000/health || echo "Health check failed"
+              
+              # Run UAT tests
+              python -m pytest tests/test_uat.py -v --junitxml=uat-test-results.xml
+              TEST_RESULT=$?
+              
+              # Stop web app
+              kill $WEB_PID || echo "Web app already stopped"
+              
+              # Exit with test result
+              exit $TEST_RESULT
+            displayName: 'Run UAT tests with web app'
 
           - task: PublishTestResults@2
             inputs:
