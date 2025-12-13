@@ -139,6 +139,8 @@ Branches:
 - Reset functionality testing
 - Cross-browser compatibility testing
 
+![UAT testting](images/UATtests.jpg)
+
 ### Test Reporting and Analytics:
 - **JUnit XML Reports**: Standardized test result format for all test types
 - **Test Trend Analysis**: Historical test performance tracking in Azure DevOps
@@ -193,6 +195,18 @@ Branches:
 5. **Production Deployment**: Artifact deployment with health checks
 
 ## Troubleshooting Guide
+### Pylint not recognized:
+- Ensure that pylint is installed in your virtual environment: pip install pylint
+
+### ModuleNotFoundError(eg. No module named 'calculator')
+- Ensure you are running the CLI from the root directory of the project (DevOpsCA2)
+- run the CLI : 
+    python -m calorie_counter.app
+
+### If Pipeline Fails:
+- Please ensure that the python version in Azure matches your local version (Python 3.12)
+- Check the pipeline logs for specific error messages and address them accordingly
+- Ensure to install requirements.txt to ensure all dependencies are met. 
 ### Coverage Failures:
 - Ensure all code paths are tested (95% minimum ENFORCED)
 - Check coverage report for missing lines: coverage report --show-missing
@@ -212,12 +226,6 @@ Branches:
 - Verify application meets <1 second response time requirement
 - Check load testing results for 1000+ item performance
 - Optimize code if performance requirements not met
-
-### Pipeline Failures:
-- Check Azure DevOps pipeline logs for specific error messages
-- Ensure Python 3.12 version consistency between local and Azure
-- Verify all dependencies in requirements.txt are correctly specified
-- Pipeline failures BLOCK merges - all issues must be resolved
 
 ### Branch Protection Issues:
 - Cannot push directly to main - use Pull Requests only
