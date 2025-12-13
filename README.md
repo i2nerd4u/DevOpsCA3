@@ -7,7 +7,7 @@ Calorie Counter is a Python application with both CLI and web interfaces that al
 Python 3.12, Flask, GitHub, Azure DevOps Pipelines, pytest, Selenium WebDriver, Bandit (SAST), Safety (dependency scanning), pylint, coverage.py
 
 ## Local Development Setup
-Clone the local Directory:
+Clone the local Directory into one of your folders on your computer:
 1- git clone https://github.com/YourUsername/X00189280_CA3.git
 2- cd DevOpsCA3
 
