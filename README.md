@@ -178,7 +178,11 @@ Branches:
 
 ### Branch Protection Gates (ENFORCED - MERGE BLOCKING):
 - **Pull Request Required**: Direct pushes to main BLOCKED
-- **Reviewer Approval**: Minimum 1 reviewer approval required
+- **Reviewer Approval**: Minimum 1 reviewer approval required 
+![Screenshot1](images/Screenshot1.jpg)
+ 
+![Screenshot1](images/Screenshot2.jpg)
+
 - **Build Validation**: Pipeline must pass before merge allowed
 - **Up-to-date Requirement**: Branch must be current with main
 
