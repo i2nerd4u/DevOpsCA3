@@ -83,7 +83,7 @@ The pipeline includes:
 
 ## Branch Policies and Protection
 Branches:
-- main (protected with enforced policies)
+- main (protected with the enforced policies)
 - dev (development branch for testing code before merging)
 
 ### Azure DevOps Branch Protection Rules (ENFORCED):
