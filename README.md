@@ -95,7 +95,7 @@ Branches:
         - Coverage below 95% = Pipeline FAILS = Merge is BLOCKED
         - Any test failure = Pipeline FAILS = Merge is BLOCKED
         - Security scan failures = Pipeline FAILS = Merge is BLOCKED
-        - Performance test failures = Pipeline FAILS = Merge is BLOCKED
+        - Performance test failures = Pipeline FAILS = Merge is BLOCKED.
 
 
 ### Merge Methods:
