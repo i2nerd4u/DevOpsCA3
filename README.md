@@ -67,6 +67,7 @@ The pipeline includes:
 
 ### Production Environment Features:
 - Manual approval gate (deployment blocked until approved)
+![onlyapproval](images/Approvalonly.jpg)
 - Artifact-based deployment
 - Production health verification
 - Rollback capabilities

@@ -186,8 +186,8 @@ stages:
               # Check if app is running
               curl -f http://localhost:8000/health || echo "Health check failed"
               
-              # Run UAT tests (using simple version for now)
-              python -m pytest test_uat_simple.py -v --junitxml=uat-test-results.xml
+              # Run UAT tests
+              python -m pytest tests/test_uat.py -v --junitxml=uat-test-results.xml
               TEST_RESULT=$?
               
               # Stop web app
